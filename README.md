@@ -124,7 +124,6 @@ The full list of article objects is:
 * phones
 * rating_average
 * ratings
-* reordersections
 * reviews
 * sections
 * sections_f
