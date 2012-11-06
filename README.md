@@ -182,18 +182,18 @@ made for just that Article using fetch().
 
 ### First do a shallow search of POI's that have "Pizza" in their title
 
-poi_list = api.table('poi').search().term('Pizza').depth('poi').page(1).objects()
+    poi_list = api.table('poi').search().term('Pizza').depth('poi').page(1).objects()
 
 ### Get the id of the first Article in the first POI
 
-first_poi = poi_list[0]
-first_article_id = first_poi.articles[0].id
-print first_poi
+    first_poi = poi_list[0]
+    first_article_id = first_poi.articles[0].id
+    print first_poi
 
 ### Now get all the data related to that Article
 
-article = api.table('article').fetch(first_article_id).objects()
-print article
+    article = api.table('article').fetch(first_article_id).objects()
+    print article
 
 ## Examples
 
