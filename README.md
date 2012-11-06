@@ -13,17 +13,19 @@ The easiest way to get started with the driver is to install it from the Python 
 
     pip install HearPlanetAPI
 
-Create a configuration file containing your credentials.  This can be
+First you need to obtain API access credentials from HearPlanet.
 
-1. /etc/hearplanet.cfg	### Site wide
+Create a configuration file containing your credentials, by copying
+and customizing hearplanet.cfg.example to one, or both, of the following:
+
+1. /etc/hearplanet.cfg	### Site-wide
 2. ~/.hearplanet.cfg	### Individual
 
-See the package version of hearplanet.cfg for example.
 
 To use the driver in a Python program, just ...
 
     from hearplanet import HearPlanet  
-    api = HearPlanet(APP_CREDENTIALS)
+    api = HearPlanet()
 
 example.py is provided with the driver as a reference.
 
@@ -65,13 +67,13 @@ something like this:
 
 
 First you would select the table (poi or article).  If you already know
-the unique identifier of the poi or article, you can use fetch.  If you
+the unique identifier of the poi or article, you can use fetch().  If you
 would like to get the "featured" articles, then just use featured().
 Otherwise, use search() plus one or more of term(), point() and
 location().  Finally, you can add filters to further refine your search.
 
 Other tables of interest might be "langugages" and "categories."  For a
-complete list, consult the API documentation.
+complete list, consult the [API documentation](http://prod.hearplanet.com/api/2.0/documentation/).
 
 ## Search Requests
 
@@ -197,9 +199,9 @@ made for just that Article using fetch().
 
 ## Examples
 
-### Create an API query object with your credentials
+### Create an API query object
 
-    api = HearPlanet(app_auth=APP_CREDENTIALS)
+    api = HearPlanet()
 
 ### Specify a search of the POI table
 
