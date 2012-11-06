@@ -1,5 +1,4 @@
 #!/usr/bin/python
-import hearplanet.check_version
 import sys
 import re
 import unittest
