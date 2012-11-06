@@ -16,8 +16,10 @@ setup(
 
     packages = find_packages(exclude=['tests', 'examples']),
     include_package_data = True,
+    exclude_package_data = {'': ['.gitignore']}, 
     data_files = [('/etc/', ['cfg/hearplanet.cfg'])],
     install_requires = [ 'requests', ],
+    setup_requires = [ 'setuptools_git >= 0.3', ],
 
     tests_require = ['nose'],
     test_suite = 'nose.collector',
