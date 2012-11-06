@@ -11,7 +11,7 @@ setup(
     url='http://pypi.python.org/pypi/HearPlanetAPI/',
     license='LICENSE.txt',
     description='HearPlanet API driver',
-    long_description=open('README').read(),
+    long_description=open('README.rst').read(),
     requires=[
         'requests',
     ],
