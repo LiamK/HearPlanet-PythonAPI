@@ -1,1 +1,4 @@
-include CHANGELOG.md LICENSE.txt README.md example.py hearplanet.cfg.example
+include *.md
+include *.txt
+include hearplanet/*.cfg
+include cfg/*.cfg

@@ -33,7 +33,7 @@ example.py is provided with the driver as a reference.
 
 Minimum Python version 2.5.
 
-[Requests](http://docs.python-requests.org/en/v0.10.7/index.html)
+[Requests](http://docs.python-requests.org/en/latest/)
 
 ## Basic Design
 
