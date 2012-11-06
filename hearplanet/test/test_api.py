@@ -1,10 +1,10 @@
-#!/bin/env python
-import check_version
+#!/usr/bin/python
+import hearplanet.check_version
 import sys
 import re
 import unittest
 import logging as log
-from hearplanet import HearPlanet, APIException
+from hearplanet.api import HearPlanet, APIException
 
 class HPTestCase(unittest.TestCase):
     def setUp(self):
