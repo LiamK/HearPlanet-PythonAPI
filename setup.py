@@ -1,4 +1,3 @@
-#from distutils.core import setup
 import multiprocessing, logging
 from setuptools import setup, find_packages
 
@@ -9,7 +8,6 @@ setup(
     long_description = open('README.rst').read(),
     keywords = 'HearPlanet API driver',
     url = 'http://pypi.python.org/pypi/HearPlanetAPI/',
-    license = 'LICENSE.txt',
     author = 'Liam Kirsher',
     author_email = 'liam@hearplanet.com',
     zip_safe = True,
