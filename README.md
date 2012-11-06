@@ -237,6 +237,11 @@ made for just that Article using fetch().
 ## Unit Tests
 
 Unit Tests are provided to ensure the driver is functioning as expected.
+The unit tests also serve as examples of various API requests.
+
+### You can run the Unit Tests in test_hearplanet.py like this:
+
+    python test_hearplanet.py
 
 ## URL Encoding
 
