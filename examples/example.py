@@ -1,9 +1,8 @@
-#!/bin/env python2.6
+#!/usr/bin/python
 """ This is a simple example of how to query the HearPlanet API.
 """
 import sys
-from hearplanet import check_version
-from hearplanet.hearplanet import HearPlanet
+from hearplanet.api import HearPlanet
 
 def main():
     # Set up the HearPlanet API with valid credentials.

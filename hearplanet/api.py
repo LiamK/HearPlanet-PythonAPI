@@ -40,6 +40,7 @@ import logging as log
 from query.table import Table
 from urllib import urlencode
 
+import check_version
 import config
 
 # URL expires after this many seconds
