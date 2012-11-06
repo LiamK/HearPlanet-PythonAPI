@@ -1,4 +1,6 @@
+include MANIFEST README
 include *.md
 include *.txt
 include hearplanet/*.cfg
 include cfg/*.cfg
+include examples/*

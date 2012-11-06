@@ -5,7 +5,7 @@ from ConfigParser import SafeConfigParser, NoOptionError
 # Put system wide configuration variables in /etc/hearplanet.cfg.
 # Put individual user config in ~/.hearplanet.cfg.
 config_files = (
-        '%s/hearplanet.cfg' % os.path.dirname(os.path.realpath(__file__)),
+        '%s/defaults.cfg' % os.path.dirname(os.path.realpath(__file__)),
         '/etc/hearplanet.cfg',
         os.path.expanduser('~/.hearplanet.cfg'),
         )
