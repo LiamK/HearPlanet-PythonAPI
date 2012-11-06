@@ -1,4 +1,10 @@
-import multiprocessing, logging
+import sys
+try:
+    import multiprocessing, logging
+except:
+    print "A more recent version of Python is needed."
+    sys.exit(1)
+
 from setuptools import setup, find_packages
 
 setup(
@@ -14,7 +20,7 @@ setup(
 
     packages = find_packages(exclude=['tests', 'examples']),
     include_package_data = True,
-    exclude_package_data = {'': ['.gitignore']}, 
+    exclude_package_data = {'': ['.gitignore']},
     data_files = [('/etc/', ['cfg/hearplanet.cfg'])],
     install_requires = [ 'requests', ],
     setup_requires = [ 'setuptools_git >= 0.3', ],
@@ -30,5 +36,5 @@ setup(
         'Natural Language :: English',
         'Programming Language :: Python',
         'Topic :: Software Development :: Libraries :: Python Modules',
-    ]
+    ],
 )
