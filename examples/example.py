@@ -1,4 +1,4 @@
-#!/bin/env python2.6
+#!/usr/bin/python
 """ This is a simple example of how to query the HearPlanet API.
 """
 import sys
