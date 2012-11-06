@@ -176,7 +176,6 @@ Filters can be applied to the searches:
     req = req.filters({'lang':'fr'})
     req = req.filters({'bbox':'(37.3,-122.8)(37.6,-120.0)'})
     req = req.filters({'radius':15'}) # search radius in kilometers
-
 Request modifiers
 -----------------
 
@@ -193,9 +192,127 @@ default page length is 10.
     limit(max_rows)
     offset(offset)
     page(page_num, limit=DEFAULT_LIMIT)
-    format(format) # ('HTML', 'HTML-RAW', 'XHTML', 'PLAIN', 'AS-
+    format(format) # ('HTML', 'HTML-RAW', 'XHTML', 'PLAIN', 'AS-IS')
+    depth(depth) # ('min', 'poi', 'article', 'section',
+                    'section_text', 'all',)
 
-TRUNCATED! Please download pandoc if you want to convert large files.
+-  The format modifiers change the formatting of the section text.
+   Normally this is set on the backend and you don’t have to worry about
+   it. However, if necessary you can override it.
+
+-  The depth modifiers change the amount of information that is
+   returned. That’s primarily for performance enhancement, when
+   accessing the API over a slow network. For example, make a shallow
+   initial search using the poi.json endpoint at depth ‘poi’ to get a
+   list of POI’s and their Articles. Then the full Article can be
+   selected by the user, and a second request made for just that Article
+   using fetch().
+
+First do a shallow search of POI’s that have “Pizza” in their title
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    poi_list = api.table('poi').search().term('Pizza').depth('poi').page(1).objects()
+
+Get the id of the first Article in the first POI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    first_poi = poi_list[0]
+    first_article_id = first_poi.articles[0].id
+    print first_poi
+
+Now get all the data related to that Article
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    article = api.table('article').fetch(first_article_id).objects()
+    print article
+
+Examples
+--------
+
+Create an API query object
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    api = HearPlanet()
+
+Specify a search of the POI table
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    req = api.table('poi').search()
+
+Add a query term, and search origin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    req = req.term('Golden Gate')
+    req = req.location('San Francisco, CA')
+
+Add a filter: only return articles in the Wikipedia channel
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    req = req.filters({'ch':'wikipedia'})
+
+Ask for only the first page (default is the first 10 objects)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    req = req.page(1)
+
+Get the return value as data or objects
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    objects = req.objects()  
+
+Do something with the objects
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    for poi in objects:
+        print poi.title
+
+Or, you can chain the requests all together
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    pois = api.table('poi').search().term('Golden Gate').location('San Francisco, CA').filters({'ch':'wikipedia'}).page(1).objects()
+
+Unit Tests
+----------
+
+Unit Tests are provided to ensure the driver is functioning as expected.
+The unit tests also serve as examples of various API requests.
+
+You can run the Unit Tests in test\_hearplanet.py like this:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    python test_hearplanet.py
+
+URL Encoding
+------------
+
+The Python driver handles URL encoding, therefore all parameters passed
+to the driver should be in their un-encoded form.
+
+
 
 .. _Requests: http://docs.python-requests.org/en/latest/
 .. _API documentation: http://prod.hearplanet.com/api/2.0/documentation/
