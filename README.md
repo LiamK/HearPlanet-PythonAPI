@@ -156,14 +156,6 @@ The default values for offset and limit are 0 and 10, respectively.
 If you use page(), just specify an integer page number from 1 to N.
 The default page length is 10.
 
-The depth modifier is primarily a performance enhancement that allows
-you to request more or less data.  You might want to do this if you
-are accessing the HearPlanet API over a slow network.  Rather than
-requesting all of the data associated with a POI and its Articles,
-you can request the minimum or poi level (with the poi.json endpoint),
-or any of the depth values with poi.json or article.json endpoints.
-
-
 	limit(max_rows)
 	offset(offset)
 	page(page_num, limit=DEFAULT_LIMIT)
@@ -177,7 +169,7 @@ worry about it.  However, if necessary you can override it.
 
 * The depth modifiers change the amount of information that is returned.
 That's primarily for performance enhancement, when accessing the API over
-a slow network.  For example, make an initial search using the poi.json
+a slow network.  For example, make a shallow initial search using the poi.json
 endpoint at depth 'poi' to get a list of POI's and their Articles.
 Then the full Article can be selected by the user, and a second request
 made for just that Article using fetch().
