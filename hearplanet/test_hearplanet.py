@@ -1,4 +1,5 @@
 #!/bin/env python
+import check_version
 import sys
 import re
 import unittest
@@ -19,22 +20,30 @@ class Format(HPTestCase):
             obj = req.objects()[0]
             self.assertEqual(obj.title, 'Puducherry', 'incorrect article format')
             if v == 'HTML':
-                self.assertTrue(re.match('<img', obj.sections[0].section_text), 'bad format')
+                self.assertTrue(re.match(
+                    '<img', obj.sections[0].section_text), 'bad format')
             elif v == 'HTML-RAW':
-                self.assertTrue(re.match('<p>', obj.sections[0].section_text), 'bad format')
+                self.assertTrue(re.match(
+                    '<p>', obj.sections[0].section_text), 'bad format')
             elif v == 'XHTML':
-                self.assertTrue(re.match('<!DOCTYPE html', obj.sections[0].section_text), 'bad format')
+                self.assertTrue(re.match(
+                    '<!DOCTYPE html', obj.sections[0].section_text),
+                    'bad format')
             elif v == 'PLAIN':
-                self.assertTrue(re.match('Puducherry', obj.sections[0].section_text), 'bad format')
+                self.assertTrue(re.match(
+                    'Puducherry', obj.sections[0].section_text), 'bad format')
             elif v == 'AS-IS': # WikiMarkup
-                self.assertTrue(re.match("'''Puducherry'''", obj.sections[0].section_text), 'bad format')
+                self.assertTrue(re.match(
+                    "'''Puducherry'''", obj.sections[0].section_text),
+                    'bad format')
 
 class Depth(HPTestCase):
     """ Loop over valid depth values, and make sure what should be there
         is there, and what shouldn't be there is not there.
     """
     def test_depths(self):
-        valid_values = ('min', 'poi', 'article', 'section', 'section_text', 'all',)
+        valid_values = ('min', 'poi', 'article', 'section',
+            'section_text', 'all',)
         for v in valid_values:
             req = self.api.table('poi').fetch(999999).depth(v)
             obj = req.objects()[0]
