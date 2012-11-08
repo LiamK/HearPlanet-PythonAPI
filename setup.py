@@ -1,11 +1,21 @@
 import sys
 try:
     import multiprocessing, logging
-except:
+except ImportError:
     print "A more recent version of Python is needed."
     sys.exit(1)
+try:
+    from setuptools import setup, find_packages
+except ImportError:
+    try:
+        from ez_setup import use_setuptools
+    except ImportError:
+        print("Can't find ez_setup")
+        print("Try: wget http://peak.telecommunity.com/dist/ez_setup.py")
+        sys.exit(1)
+    use_setuptools()
+    from setuptools import setup, find_packages
 
-from setuptools import setup, find_packages
 
 setup(
     name = 'HearPlanetAPI',
