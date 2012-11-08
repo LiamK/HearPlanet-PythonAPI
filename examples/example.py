@@ -22,7 +22,6 @@ def main():
         objects = req.objects()
         for obj in objects:
             _print_obj(index, obj)
-            #_print_article(index, obj)
             index += 1
         if not req.more():
             break
@@ -31,20 +30,9 @@ def _print_obj(index, obj):
     """ Print the representation of the object, which is simply
         the pretty-print version of the Python object.
     """
-    print '%03d' % index, '-'*60
-    print obj
-
-def _print_article(index, obj):
-    """ Alternative print statement, if you want to print a subset
-        of article data.  If you used .objects() then you can access
-        fields using object syntax.
-    """ 
-    print '%02d. %s (%s) %s' % (
-        index,
-        obj.title,
-        obj.channel.display_name,
-        obj.distance_str,
-        )
+    print obj.title
+    #print '%03d' % index, '-'*60
+    #print obj
 
 if __name__ == '__main__':
     try:
