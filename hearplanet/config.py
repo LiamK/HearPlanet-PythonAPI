@@ -1,14 +1,16 @@
 import os
 import sys
+import pkg_resources
 from ConfigParser import SafeConfigParser, NoOptionError
 
+# use pkg_resources so we can be zip-safe and keep defaults in egg
 # Put system wide configuration variables in /etc/hearplanet.cfg.
 # Put individual user config in ~/.hearplanet.cfg.
-config_files = (
-        '%s/defaults.cfg' % os.path.dirname(os.path.realpath(__file__)),
+config_files = [
+        pkg_resources.resource_filename(__name__, 'defaults.cfg'),
         '/etc/hearplanet.cfg',
         os.path.expanduser('~/.hearplanet.cfg'),
-        )
+        ]
 
 parser = SafeConfigParser()
 parser.read(config_files)
