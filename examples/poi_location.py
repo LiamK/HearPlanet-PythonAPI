@@ -31,21 +31,12 @@ def main():
             # print them.
             for art in poi.articles:
                 print "\t%s" % art.title
-                try:
-                    for addr in art.addresses:
-                        print '\tAddress:', addr.address
-                except AttributeError:
-                    pass
-                try:
-                    for site in art.websites:
-                        print '\tURL:', site.url
-                except AttributeError:
-                    pass
-                try:
-                    for phone in art.phones:
+                for addr in getattr(art, 'addresses', []):
+                    print '\tAddress:', addr.address
+                for site in getattr(art, 'websites', []):
+                    print '\tWebsite:', site.url
+                for phone in getattr(art, 'phones', []):
                         print '\tPhone:', phone.phone
-                except AttributeError:
-                    pass
 
 
 if __name__ == '__main__':
