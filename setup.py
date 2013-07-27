@@ -19,7 +19,7 @@ except ImportError:
 
 setup(
     name = 'HearPlanetAPI',
-    version = '0.1.0',
+    version = '0.1.1',
     description = 'HearPlanet API driver',
     long_description = open('README.rst').read(),
     keywords = 'HearPlanet API driver',

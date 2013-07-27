@@ -176,6 +176,7 @@ Filters can be applied to the searches:
     req = req.filters({'lang':'fr'})
     req = req.filters({'bbox':'(37.3,-122.8)(37.6,-120.0)'})
     req = req.filters({'radius':15'}) # search radius in kilometers
+
 Request modifiers
 -----------------
 
@@ -209,14 +210,14 @@ default page length is 10.
    using fetch().
 
 First do a shallow search of POI’s that have “Pizza” in their title
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
     poi_list = api.table('poi').search().term('Pizza').depth('poi').page(1).objects()
 
 Get the id of the first Article in the first POI
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
@@ -225,7 +226,7 @@ Get the id of the first Article in the first POI
     print first_poi
 
 Now get all the data related to that Article
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
@@ -236,21 +237,21 @@ Examples
 --------
 
 Create an API query object
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
     api = HearPlanet()
 
 Specify a search of the POI table
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
     req = api.table('poi').search()
 
 Add a query term, and search origin
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
@@ -258,28 +259,28 @@ Add a query term, and search origin
     req = req.location('San Francisco, CA')
 
 Add a filter: only return articles in the Wikipedia channel
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
     req = req.filters({'ch':'wikipedia'})
 
 Ask for only the first page (default is the first 10 objects)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
     req = req.page(1)
 
 Get the return value as data or objects
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
     objects = req.objects()  
 
 Do something with the objects
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
@@ -287,7 +288,7 @@ Do something with the objects
         print poi.title
 
 Or, you can chain the requests all together
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
@@ -300,7 +301,7 @@ Unit Tests are provided to ensure the driver is functioning as expected.
 The unit tests also serve as examples of various API requests.
 
 You can run the Unit Tests in test\_hearplanet.py like this:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
